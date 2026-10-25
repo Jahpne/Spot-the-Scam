@@ -1,0 +1,10 @@
+{
+  "name": "Spot the Scam",
+  "short_name": "Spot the Scam",
+  "description": "Offline AI scam alert & threat detector.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0b12",
+  "theme_color": "#0b0b12"
+}
