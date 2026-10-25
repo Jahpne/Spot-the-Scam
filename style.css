@@ -1,0 +1,100 @@
+/* ==========================================================================
+   style.css  |  SPOT THE SCAM
+   ========================================================================== */
+:root {
+  --bg: #0b0b12;
+  --surface: #14121f;
+  --surface-2: #1c1830;
+  --line: rgba(168, 85, 247, 0.28);
+  --purple: #8b5cf6;
+  --purple-2: #a855f7;
+  --deep: #6d28d9;
+  --white: #ffffff;
+  --dim: #b5aed0;
+  --real: #15803d;
+  --real-hi: #4ade80;
+  --scam: #dc2626;
+  --scam-hi: #f87171;
+  --amber: #fbbf24;
+  --mono: ui-monospace, Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html, body {
+  margin: 0; background: var(--bg); color: var(--white);
+  font-family: var(--sans); font-size: 16px; line-height: 1.5;
+}
+body { min-height: 100dvh; }
+
+#app {
+  max-width: 520px; margin: 0 auto; min-height: 100dvh;
+  display: flex; flex-direction: column; padding: 16px;
+}
+
+.topbar { display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; }
+.brand-mini { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+.pill { font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); }
+.pill.online { color: var(--real-hi); border-color: rgba(74, 222, 128, 0.4); }
+.pill.offline { color: var(--amber); border-color: rgba(251, 191, 36, 0.5); }
+
+.screen { display: none; flex: 1; flex-direction: column; gap: 14px; }
+.screen.active { display: flex; }
+
+.dim { color: var(--dim); }
+.ok { color: var(--real-hi); }
+.fine { font-size: 0.8rem; margin: 0; text-align: center; }
+
+h1 { font-size: 2.8rem; line-height: 1.02; margin: 0 0 10px; text-shadow: 0 0 40px rgba(139, 92, 246, 0.55); }
+h2 { font-size: 1.5rem; margin: 0; }
+h3 { font-size: 1rem; margin: 0 0 8px; }
+.sub { margin: 0; color: var(--dim); }
+
+.card-lite { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.lv-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.xpbar { height: 8px; border-radius: 99px; background: rgba(255, 255, 255, 0.12); overflow: hidden; }
+.xpbar i { display: block; height: 100%; width: 0; background: var(--purple-2); }
+
+.menu { display: grid; gap: 10px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.btn {
+  font: 600 1rem var(--sans); color: var(--white); background: var(--surface-2);
+  border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; min-height: 48px; cursor: pointer;
+}
+.btn:hover { border-color: var(--purple-2); }
+.btn.primary { background: linear-gradient(135deg, var(--deep), var(--purple-2)); border-color: transparent; text-align: center; }
+.btn.tile { min-height: 84px; display: flex; flex-direction: column; justify-content: center; }
+.btn.tile.slim { min-height: 56px; align-items: center; text-align: center; }
+.btn.ghost { background: transparent; text-align: center; }
+.btn.tiny { font-size: 0.85rem; padding: 8px 12px; min-height: 40px; }
+
+.settings { display: flex; justify-content: center; padding: 4px 0; }
+.switch { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+
+.hud { display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 10px; }
+.icon-btn { font-size: 1.8rem; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--white); }
+.hud-score b { font: 800 1.5rem var(--mono); }
+.hud-score small { display: block; font-size: 0.7rem; color: var(--dim); }
+
+.stage { flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 240px; }
+.card { border-radius: 18px; border: 1px solid var(--line); background: var(--surface); }
+.card .bubble { padding: 16px; font-size: 1.04rem; }
+
+.answers { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.btn.ans { text-align: center; font-size: 1.35rem; font-weight: 800; }
+.btn.ans.scam { background: var(--scam); }
+.btn.ans.real { background: var(--real); }
+#play.answered .answers { display: none; }
+
+.sheet { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 16px; display: grid; gap: 10px; }
+.verdict { font-size: 1.25rem; font-weight: 800; }
+.verdict.good { color: var(--real-hi); }
+.verdict.bad { color: var(--scam-hi); }
+.why { margin: 0; color: #e7e3f5; }
+
+.page-head { display: flex; align-items: center; gap: 14px; }
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 24px); opacity: 0; background: var(--surface-2); border: 1px solid var(--purple-2); padding: 10px 16px; border-radius: 12px; transition: 0.25s; z-index: 20; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
